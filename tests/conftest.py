@@ -84,12 +84,11 @@ def _allow_stderr_output(config: pytest.Config):
 
 def pytest_configure(config: pytest.Config):
     """Configure pytest session."""
+    if os.environ.get("DATABRICKS_SKIP_CONNECT") == "1":
+        return  # CI offline: não abre Databricks Connect
+
     with _allow_stderr_output(config):
         _enable_fallback_compute()
-
-        # Initialize Spark session eagerly, so it is available even when
-        # SparkSession.builder.getOrCreate() is used. For DB Connect 15+,
-        # we validate version compatibility with the remote cluster.
         if hasattr(DatabricksSession.builder, "validateSession"):
             DatabricksSession.builder.validateSession().getOrCreate()
         else:
