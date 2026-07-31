@@ -1,0 +1,14 @@
+{
+    "mcpServers": {
+      "databricks": {
+        "command": "uvx",
+        "args": [
+          "databricks-mcp-server"
+        ],
+        "env": {
+          "DATABRICKS_HOST": "https://dbc-174431-174431.cloud.databricks.com",
+          "DATABRICKS_PROFILE": "FREE_EDITION"
+        }
+      }
+    }
+  }

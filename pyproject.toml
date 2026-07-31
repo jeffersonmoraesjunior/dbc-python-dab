@@ -1,5 +1,5 @@
 [project]
-name = "my_project"
+name = "bakehouse"
 version = "0.0.1"
 authors = [{ name = "jeffersonjuniormoraes@gmail.com" }]
 requires-python = ">=3.10,<3.13"
@@ -19,13 +19,6 @@ dev = [
     "databricks-connect>=15.4,<15.5",
     "ipykernel",
 ]
-
-[project.scripts]
-main = "my_project.main:main"
-
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
 
 [tool.ruff]
 line-length = 120

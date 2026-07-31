@@ -1,0 +1,16 @@
+# Job that orchestrates the medallion pipeline. In the dev target the schedule is paused
+# automatically by 'mode: development'.
+resources:
+  jobs:
+    bakehouse_medallion_job:
+      name: bakehouse_medallion_job
+
+      trigger:
+        periodic:
+          interval: 1
+          unit: DAYS
+
+      tasks:
+        - task_key: refresh_medallion_pipeline
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.bakehouse_medallion.id}

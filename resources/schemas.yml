@@ -1,0 +1,22 @@
+# One schema per medallion layer. These schema resources are the single source of truth for the
+# layer names: the pipeline configuration keys (bronze_schema/silver_schema/gold_schema) are wired
+# to ${resources.schemas.<layer>.name}, so the SQL never hardcodes a schema name either.
+#
+# The catalog itself is not managed here: on this Free Edition workspace (Default Storage), catalogs
+# cannot be created through the bundle's Unity Catalog REST path, so bakehouse_dev / bakehouse_prd
+# are created out-of-band and referenced via ${var.catalog}. The catalog name is still never
+# hardcoded in any file.
+resources:
+  schemas:
+    bronze:
+      name: bronze
+      catalog_name: ${var.catalog}
+      comment: Raw ingested Bakehouse data with ingestion metadata.
+    silver:
+      name: silver
+      catalog_name: ${var.catalog}
+      comment: Cleaned and conformed Bakehouse data.
+    gold:
+      name: gold
+      catalog_name: ${var.catalog}
+      comment: BI-ready Bakehouse marts.

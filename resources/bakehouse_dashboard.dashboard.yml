@@ -1,0 +1,11 @@
+# AI/BI (Lakeview) dashboard over the gold marts. The dashboard JSON uses bare table names;
+# dataset_catalog / dataset_schema inject the catalog and gold schema at deploy time, so the
+# catalog name is never hardcoded and the dashboard is portable across dev/prod.
+resources:
+  dashboards:
+    bakehouse_overview:
+      display_name: Bakehouse Overview
+      file_path: ../src/dashboards/bakehouse_overview.lvdash.json
+      warehouse_id: ${var.warehouse_id}
+      dataset_catalog: ${var.catalog}
+      dataset_schema: ${resources.schemas.gold.name}
