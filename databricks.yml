@@ -40,7 +40,7 @@ targets:
     workspace:
       host: https://dbc-47e2ac5e-1601.cloud.databricks.com
       # Deploy to a single, well-known location in production.
-      root_path: /Workspace/${bundle.name}
+      root_path: /Workspace/Users/jeffersonjuniormoraes@gmail.com/.bundle/${bundle.name}/${bundle.target}
     variables:
       catalog: bakehouse_prd
     permissions:
