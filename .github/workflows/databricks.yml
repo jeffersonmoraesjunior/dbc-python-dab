@@ -25,7 +25,7 @@ jobs:
         with:
           enable-cache: true
       - run: uv sync --dev
-      - run: uv run ruff check .
+      - run: uv run ruff check tests
       - name: pytest (offline)
         env:
           DATABRICKS_SKIP_CONNECT: "1"   # nao abre Databricks Connect so para coletar

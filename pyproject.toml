@@ -22,3 +22,4 @@ dev = [
 
 [tool.ruff]
 line-length = 120
+exclude = [".cursor", ".ai-dev-kit", ".venv", "build", "dist"]
